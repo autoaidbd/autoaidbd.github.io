@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>নিবন্ধন - AutoAid Bangladesh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #e53935;
+            --secondary: #43a047;
+            --accent: #ffb300;
+            --dark: #212121;
+            --light: #f5f5f5;
+            --gray: #757575;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Kalpurush', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .running-text {
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .running-text span {
+            display: inline-block;
+            animation: running-text 15s linear infinite;
+        }
+        
+        @keyframes running-text {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .registration-page {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+            min-height: 100vh;
+        }
+        
+        .registration-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--dark);
+        }
+        
+        .form-title h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .user-type-selector {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .user-type-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gray);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .user-type-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+        
+        .registration-form {
+            display: none;
+        }
+        
+        .registration-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #c62828;
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .login-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        .emergency-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background-color: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .emergency-btn:hover {
+            background-color: #c62828;
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 992px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .running-text {
+                margin: 15px 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: white;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 15px;
+                border-radius: 0;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-float, .emergency-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+            
+            .emergency-btn {
+                bottom: 90px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .registration-container {
+                padding: 20px;
+            }
+            
+            .user-type-selector {
+                flex-direction: column;
+            }
+            
+            .user-type-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="https://wa.me/8801853041394" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="registration.html" class="emergency-btn">
+        <i class="fas fa-tools"></i>
+    </a>
+
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <img src="https://i.ibb.co.com/spZN7JK9/Auto-Aid-Logo-Copy-removebg-preview-1.png" alt="AutoAid Logo">
+                    <div class="logo-text">AutoAid</div>
+                </div>
+                <div class="running-text">
+                    <span>বাংলাদেশের প্রথম ইমার্জেন্সি অটোমোবাইল সার্ভিস প্ল্যাটফর্ম...</span>
+                </div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">হোম</a></li>
+                        <li><a href="about.html">আমাদের সম্পর্কে</a></li>
+                        <li><a href="services.html">সেবাসমূহ</a></li>
+                        <li><a href="registration.html" class="active">নিবন্ধন</a></li>
+                        <li><a href="contact.html">যোগাযোগ</a></li>
+                        <li><a href="login.html">লগইন</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="registration-page">
+        <div class="container">
+            <div class="registration-container">
+                <div class="form-title">
+                    <h2>নিবন্ধন করুন</h2>
+                    <p>AutoAid পরিবারের সাথে যুক্ত হোন</p>
+                </div>
+                
+                <div class="user-type-selector">
+                    <button class="user-type-btn active" data-type="receiver">সার্ভিস রিসিভার</button>
+                    <button class="user-type-btn" data-type="provider">সার্ভিস প্রোভাইডার</button>
+                </div>
+                
+                <!-- Service Receiver Registration Form -->
+                <form id="receiver-form" class="registration-form active">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="r-name">পূর্ণ নাম *</label>
+                            <input type="text" id="r-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="r-phone">মোবাইল নম্বর *</label>
+                            <input type="tel" id="r-phone" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="r-email">ইমেইল ঠিকানা</label>
+                        <input type="email" id="r-email" class="form-control">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="r-password">পাসওয়ার্ড *</label>
+                            <input type="password" id="r-password" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="r-confirm-password">পাসওয়ার্ড নিশ্চিত করুন *</label>
+                            <input type="password" id="r-confirm-password" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="r-address">ঠিকানা *</label>
+                        <textarea id="r-address" class="form-control" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="r-vehicle-type">গাড়ির ধরন *</label>
+                            <select id="r-vehicle-type" class="form-control" required>
+                                <option value="">নির্বাচন করুন</option>
+                                <option value="car">কার</option>
+                                <option value="suv">এসইউভি</option>
+                                <option value="microbus">মাইক্রোবাস</option>
+                                <option value="motorcycle">মোটরসাইকেল</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="r-vehicle-model">গাড়ির মডেল</label>
+                            <input type="text" id="r-vehicle-model" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">নিবন্ধন সম্পন্ন করুন</button>
+                    
+                    <div class="login-link">
+                        <p>ইতিমধ্যে অ্যাকাউন্ট আছে? <a href="login.html">লগইন করুন</a></p>
+                    </div>
+                </form>
+                
+                <!-- Service Provider Registration Form -->
+                <form id="provider-form" class="registration-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="p-name">পূর্ণ নাম *</label>
+                            <input type="text" id="p-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="p-phone">মোবাইল নম্বর *</label>
+                            <input type="tel" id="p-phone" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="p-email">ইমেইল ঠিকানা</label>
+                        <input type="email" id="p-email" class="form-control">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="p-password">পাসওয়ার্ড *</label>
+                            <input type="password" id="p-password" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="p-confirm-password">পাসওয়ার্ড নিশ্চিত করুন *</label>
+                            <input type="password" id="p-confirm-password" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="p-address">ঠিকানা *</label>
+                        <textarea id="p-address" class="form-control" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="p-nid">জাতীয় পরিচয়পত্র নম্বর *</label>
+                            <input type="text" id="p-nid" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="p-experience">অভিজ্ঞতা (বছর) *</label>
+                            <input type="number" id="p-experience" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="p-services">প্রদানকৃত সেবাসমূহ *</label>
+                        <div>
+                            <input type="checkbox" id="service1" name="services" value="roadside">
+                            <label for="service1">রোডসাইড সহায়তা</label><br>
+                            <input type="checkbox" id="service2" name="services" value="battery">
+                            <label for="service2">বেটারি সার্ভিস</label><br>
+                            <input type="checkbox" id="service3" name="services" value="tire">
+                            <label for="service3">টায়ার সার্ভিস</label><br>
+                            <input type="checkbox" id="service4" name="services" value="towing">
+                            <label for="service4">টোয়িং সার্ভিস</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="p-documents">দস্তাবেজ আপলোড *</label>
+                        <input type="file" id="p-documents" class="form-control" accept=".pdf,.jpg,.png" multiple required>
+                        <small>এনআইডি, ফটো, সার্টিফিকেট ইত্যাদি</small>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">নিবন্ধন সম্পন্ন করুন</button>
+                    
+                    <div class="login-link">
+                        <p>ইতিমধ্যে অ্যাকাউন্ট আছে? <a href="login.html">লগইন করুন</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>AutoAid Bangladesh</h3>
+                    <p>বাংলাদেশের প্রথম ইমার্জেন্সি অটোমোবাইল সার্ভিস প্ল্যাটফর্ম।</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>দ্রুত লিংক</h3>
+                    <ul>
+                        <li><a href="index.html">হোম</a></li>
+                        <li><a href="about.html">আমাদের সম্পর্কে</a></li>
+                        <li><a href="services.html">সেবাসমূহ</a></li>
+                        <li><a href="registration.html">নিবন্ধন</a></li>
+                        <li><a href="contact.html">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>সেবাসমূহ</h3>
+                    <ul>
+                        <li><a href="services.html">ইমার্জেন্সি রোডসাইড সহায়তা</a></li>
+                        <li><a href="services.html">বেটারি জাম্প স্টার্ট</a></li>
+                        <li><a href="services.html">টায়ার পরিবর্তন</a></li>
+                        <li><a href="services.html">জরুরি ইঞ্জিন মেরামত</a></li>
+                        <li><a href="services.html">টোয়িং সার্ভিস</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>যোগাযোগ</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> উত্তরা, ঢাকা, বাংলাদেশ</li>
+                        <li><i class="fas fa-phone"></i> +88 01853041394</li>
+                        <li><i class="fas fa-envelope"></i> info@autoaidbd.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 AutoAid Bangladesh. সকল অধিকার সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+
+        const userTypeBtns = document.querySelectorAll('.user-type-btn');
+        const registrationForms = document.querySelectorAll('.registration-form');
+        
+        userTypeBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                userTypeBtns.forEach(b => b.classList.remove('active'));
+                registrationForms.forEach(form => form.classList.remove('active'));
+                
+                this.classList.add('active');
+                
+                const formType = this.getAttribute('data-type');
+                document.getElementById(`${formType}-form`).classList.add('active');
+            });
+        });
+
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('নিবন্ধন সফলভাবে জমা হয়েছে! অ্যাডমিন যাচাইয়ের পর আপনার অ্যাকাউন্ট সক্রিয় হবে।');
+                this.reset();
+            });
+        });
+    </script>
+</body>
+</html>

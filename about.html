@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমাদের সম্পর্কে - AutoAid Bangladesh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #e53935;
+            --secondary: #43a047;
+            --accent: #ffb300;
+            --dark: #212121;
+            --light: #f5f5f5;
+            --gray: #757575;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Kalpurush', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .running-text {
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .running-text span {
+            display: inline-block;
+            animation: running-text 15s linear infinite;
+        }
+        
+        @keyframes running-text {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #c62828;
+            transform: translateY(-2px);
+        }
+        
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .features {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card i {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        .emergency-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background-color: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .emergency-btn:hover {
+            background-color: #c62828;
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 992px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .running-text {
+                margin: 15px 0;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: white;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 15px;
+                border-radius: 0;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .whatsapp-float, .emergency-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+            
+            .emergency-btn {
+                bottom: 90px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .feature-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="https://wa.me/8801853041394" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="registration.html" class="emergency-btn">
+        <i class="fas fa-tools"></i>
+    </a>
+
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <img src="https://i.ibb.co.com/spZN7JK9/Auto-Aid-Logo-Copy-removebg-preview-1.png" alt="AutoAid Logo">
+                    <div class="logo-text">AutoAid</div>
+                </div>
+                <div class="running-text">
+                    <span>বাংলাদেশের প্রথম ইমার্জেন্সি অটোমোবাইল সার্ভিস প্ল্যাটফর্ম...</span>
+                </div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">হোম</a></li>
+                        <li><a href="about.html" class="active">আমাদের সম্পর্কে</a></li>
+                        <li><a href="services.html">সেবাসমূহ</a></li>
+                        <li><a href="registration.html">নিবন্ধন</a></li>
+                        <li><a href="contact.html">যোগাযোগ</a></li>
+                        <li><a href="login.html">লগইন</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>আমাদের সম্পর্কে</h1>
+            <p>AutoAid Bangladesh এর যাত্রা শুরু এবং আমাদের লক্ষ্য ও উদ্দেশ্য সম্পর্কে জানুন</p>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>আমাদের মিশন</h2>
+                    <p>AutoAid Bangladesh বাংলাদেশের প্রথম ইমার্জেন্সি অটোমোবাইল সার্ভিস প্ল্যাটফর্ম। আমাদের মূল লক্ষ্য হলো দেশের অটোমোবাইল ইমার্জেন্সি সার্ভিস ব্যবস্থায় আমূল পরিবর্তন আনা এবং একটি নিরাপদ, দ্রুত ও নির্ভরযোগ্য সার্ভিস ব্যবস্থা গড়ে তোলা।</p>
+                    <p>আমরা বিশ্বাস করি যে প্রযুক্তির সঠিক ব্যবহারের মাধ্যমে আমরা গাড়ি মালিকদের ইমার্জেন্সি সমস্যা দ্রুত সমাধান করতে পারি এবং একই সাথে হাজার হাজার মেকানিক ও সার্ভিস প্রোভাইডারদের জন্য আয়ের সুযোগ সৃষ্টি করতে পারি।</p>
+                    <a href="registration.html" class="btn">এখনই যুক্ত হোন</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="আমাদের মিশন">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>আমাদের মূল্যবোধ</h2>
+                <p>যেসব নীতির উপর ভিত্তি করে AutoAid Bangladesh প্রতিষ্ঠিত</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>সামাজিক দায়বদ্ধতা</h3>
+                    <p>আমরা শুধু ব্যবসা নয়, সামাজিক দায়বদ্ধতা নিয়েও কাজ করি। আমাদের সার্ভিস প্রোভাইডারদের প্রশিক্ষণ ও উন্নয়নে বিশেষ গুরুত্ব দিই।</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>নিরাপত্তা</h3>
+                    <p>গাড়ি মালিক ও সার্ভিস প্রোভাইভার উভয়ের নিরাপত্তা আমাদের সর্বোচ্চ অগ্রাধিকার। সকল সার্ভিস প্রোভাইডার যাচাইকৃত।</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>স্বচ্ছতা</h3>
+                    <p>কোন গোপন চার্জ নেই। সার্ভিস খরচ নির্ধারণে সম্পূর্ণ স্বচ্ছতা বজায় রাখা হয়।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="আমাদের ইতিহাস">
+                </div>
+                <div class="about-text">
+                    <h2>আমাদের ইতিহাস</h2>
+                    <p>AutoAid Bangladesh এর যাত্রা শুরু হয় ২০২৩ সালে মোঃ পারভেজ গাজী (শাকিল) এর একটি স্বপ্ন থেকে। উত্তরা ড্রাইভিং ট্রেনিং সেন্টার এর অভিজ্ঞতা থেকে তিনি বুঝতে পেরেছিলেন যে বাংলাদেশের অটোমোবাইল ইমার্জেন্সি সার্ভিস ব্যবস্থায় আমূল পরিবর্তনের প্রয়োজন।</p>
+                    <p>ইঞ্জিনিয়ার মোঃ রিফাতুল আমিন রিফাত এবং ইঞ্জিনিয়ার ডালিয়া ফেরদৌসি বাণী এর প্রযুক্তিগত দক্ষতা নিয়ে এই স্বপ্ন বাস্তবায়নের কাজ শুরু হয়। আজ আমরা গর্বিত যে বাংলাদেশের প্রথম ইমার্জেন্সি অটোমোবাইল সার্ভিস প্ল্যাটফর্ম হিসেবে আমাদের যাত্রা শুরু করতে পেরেছি।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>AutoAid Bangladesh</h3>
+                    <p>বাংলাদেশের প্রথম ইমার্জেন্সি অটোমোবাইল সার্ভিস প্ল্যাটফর্ম।</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>দ্রুত লিংক</h3>
+                    <ul>
+                        <li><a href="index.html">হোম</a></li>
+                        <li><a href="about.html">আমাদের সম্পর্কে</a></li>
+                        <li><a href="services.html">সেবাসমূহ</a></li>
+                        <li><a href="registration.html">নিবন্ধন</a></li>
+                        <li><a href="contact.html">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>সেবাসমূহ</h3>
+                    <ul>
+                        <li><a href="services.html">ইমার্জেন্সি রোডসাইড সহায়তা</a></li>
+                        <li><a href="services.html">বেটারি জাম্প স্টার্ট</a></li>
+                        <li><a href="services.html">টায়ার পরিবর্তন</a></li>
+                        <li><a href="services.html">জরুরি ইঞ্জিন মেরামত</a></li>
+                        <li><a href="services.html">টোয়িং সার্ভিস</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>যোগাযোগ</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> উত্তরা, ঢাকা, বাংলাদেশ</li>
+                        <li><i class="fas fa-phone"></i> +88 01853041394</li>
+                        <li><i class="fas fa-envelope"></i> info@autoaidbd.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 AutoAid Bangladesh. সকল অধিকার সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
